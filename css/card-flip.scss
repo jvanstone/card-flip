@@ -1,0 +1,106 @@
+/*******
+Theme Name: Card Flip StyleSheet
+Theme URI: https://vanstoneonline.com/Card-Flip
+Author: VanstoneOnline
+Author URI: https://vanstoneonline.com
+Description: 
+Version: 2021.1
+License: GNU General Public License
+License URI: https://www.gnu.org/licenses/gpl.html
+Tags: one-column, two-columns, custom-menu, featured-images, microformats, sticky-post, threaded-comments, translation-ready
+Text Domain: blankslate
+
+VanstoneOnline WordPress Theme © 2011-2019 TidyThemes
+VanstoneONline is distributed under the terms of the GNU GPL
+*/
+
+//VAR for Stlyesheet
+$backgroundcolor1: rgb(247, 248, 248); //Off-White
+
+$border-test: solid 1px rgb(63, 32, 32);
+$border-round: 1rem;
+
+$h1-size: 24px;
+$header-color:#0b072c;
+$h2-background:#6b1b1b7a;
+
+$font-color: #05020c;
+$font-color2: #1a63e4;
+$line-height: 1.414;
+$mainText: 18px;
+
+
+/* set thumbnail in CSS */
+.size-thumbnail {
+	max-width: 100%;
+	height: auto;
+}
+
+
+//Card flip Styling
+#gallery-index { 
+    display: flex;
+    flex-flow: row wrap;
+    //border: $border-test;
+}
+
+.gallery-item {
+    margin: 10px;
+    align-items: center;
+}
+
+.card {
+    position: relative;
+   // width: 200px;
+   // min-height: 200px;
+    color: $font-color;
+  }
+  
+  .card__img {
+    border-radius: $border-round;
+    transform: translateZ(1.5rem);
+    box-shadow: 0 2rem 1rem -2rem #b36b93;
+  }
+  
+  .card__title {
+    font-size: 1rem;
+    margin: 1.5rem 0 0.5rem;
+    color: $font-color2;
+    font-weight: 700;
+  }
+  
+  .card--front,
+  .card--back {
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    position: relative;
+    transition: all 1s ease-in-out;
+    transform-style: preserve-3d;
+    box-shadow: 0 2rem 5rem -3.5rem rgba(0,0,0,0.15);
+  }
+  
+  .card--front {
+    z-index: 10;
+  }
+  
+  .card--back {
+      position: absolute;
+      background-color: rgb(146, 125, 125);
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 90%;
+      z-index: -1;
+      transform: rotateY(-180deg);
+    }
+  
+  .card:hover > .card--back {
+    transform: rotateY(0deg);
+    z-index: 10;
+  }
+  
+  .card:hover > .card--front {
+    transform: rotateY(180deg);
+    z-index: -1;
+  }
