@@ -11,7 +11,7 @@
 
 
 //Set thumbnail size
-add_image_size( 'gallery-index', 200, 200 ); 
+add_image_size( 'gallery-index', 200, 200, array('center','center')); 
 
 //Load Style Sheet for the Card Flip
 function wpse_load_plugin_css() {
@@ -24,13 +24,19 @@ add_action( 'wp_enqueue_scripts', 'wpse_load_plugin_css' );
 
 if( !function_exists('wpb_card_flip') ) {
 function wpb_card_flip() { 
+
+    ob_start();
+    $true='true';
     $args = array(
         'posts_per_page'   => -1,
         'orderby'          => 'date',
         'order'            => 'ASC',
     );
     $the_query = new WP_Query($args);
+    //Bulk Add HTML to the Function.
+    ob_start();
     ?>
+    
    <div id="gallery-index"> 
     <?php
     if ( $the_query->have_posts() ) : 
@@ -61,8 +67,10 @@ function wpb_card_flip() {
     ?>
     </div> <!-- End Gallery -->
     <?php 
+
+    return ob_get_clean();
     } 
 // register shortcode
-add_shortcode('cardflip', 'wpb_card_flip'); 
 }
+add_shortcode('card_flip', 'wpb_card_flip'); 
  ?>
