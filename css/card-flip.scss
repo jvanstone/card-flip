@@ -14,20 +14,15 @@ VanstoneOnline WordPress Theme © 2011-2019 TidyThemes
 VanstoneONline is distributed under the terms of the GNU GPL
 */
 
-//VAR for Stlyesheet
-$backgroundcolor1: rgb(247, 248, 248); //Off-White
+//Customizable Var for plugin
+$card--front-color: rgb(255, 255, 255); 
+$card--back-color: rgba(85, 200, 200); 
 
-$border-test: solid 1px rgb(63, 32, 32);
+$item-width: 200px;
 $border-round: 1rem;
 
-$h1-size: 24px;
+$h1-size: 1rem;
 $header-color:#0b072c;
-$h2-background:#6b1b1b7a;
-
-$font-color: #05020c;
-$font-color2: #1a63e4;
-$line-height: 1.414;
-$mainText: 18px;
 
 
 /* set thumbnail in CSS */
@@ -36,34 +31,44 @@ $mainText: 18px;
 	height: auto;
 }
 
+div#gallery-index { 
+  margin: 1em auto;
+  
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
 
-//Card flip Styling
-#gallery-index { 
-    display: flex;
-    flex-flow: row wrap;
-    //border: $border-test;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .gallery-item {
-    margin: 10px;
-    align-items: center;
+  box-sizing: inherit;
+  margin: 10px;
+  width: $item-width;
+  height: auto;
 }
 
 .card {
-    position: relative;
-    width: 200px;
-    min-height: 200px;
-    color: $font-color;
-  }
+  box-sizing: inherit;
+  position: relative;
+  color: $font-color;
+  width: $item-width;
+  height: auto;
+}
   
   .card__img {
+    box-sizing: inherit;
     border-radius: $border-round;
     transform: translateZ(1.5rem);
-    box-shadow: 0 2rem 1rem -2rem #b36b93;
+    box-shadow: 0 1rem .5rem -2rem #b36b93;
   }
   
   .card__title {
-    font-size: 1rem;
+    box-sizing: inherit;
+    font-size: $h1-size;
     margin: 1.5rem 0 0.5rem;
     color: $font-color2;
     font-weight: 700;
@@ -71,9 +76,11 @@ $mainText: 18px;
   
   .card--front,
   .card--back {
-    border-radius: 1rem;
+    box-sizing: inherit;
+    perspective: 800px;
+    border-radius: $border-round;
     padding: 1rem;
-    background-color: #fff;
+    background-color: $card--front-color;
     position: relative;
     transition: all 1s ease-in-out;
     transform-style: preserve-3d;
@@ -85,14 +92,14 @@ $mainText: 18px;
   }
   
   .card--back {
-      position: absolute;
-      background-color: rgb(146, 125, 125);
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 90%;
-      z-index: -1;
-      transform: rotateY(-180deg);
+    position: absolute;
+    background-color: $card--back-color;
+    left: .5  rem;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+    transform: rotateY(-180deg);
     }
   
   .card:hover > .card--back {

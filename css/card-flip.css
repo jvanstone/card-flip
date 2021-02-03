@@ -20,7 +20,12 @@ VanstoneONline is distributed under the terms of the GNU GPL
   height: auto;
 }
 
-#gallery-index {
+div#gallery-index {
+  margin: 1em auto;
+  width: 100%;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,29 +33,44 @@ VanstoneONline is distributed under the terms of the GNU GPL
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-}
-
-.gallery-item {
-  margin: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
+.gallery-item {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  margin: 10px;
+  width: 200px;
+  height: auto;
+}
+
 .card {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
   position: relative;
   color: #05020c;
+  width: 200px;
+  height: auto;
 }
 
 .card__img {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
   border-radius: 1rem;
   -webkit-transform: translateZ(1.5rem);
           transform: translateZ(1.5rem);
-  -webkit-box-shadow: 0 2rem 1rem -2rem #b36b93;
-          box-shadow: 0 2rem 1rem -2rem #b36b93;
+  -webkit-box-shadow: 0 1rem .5rem -2rem #b36b93;
+          box-shadow: 0 1rem .5rem -2rem #b36b93;
 }
 
 .card__title {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
   font-size: 1rem;
   margin: 1.5rem 0 0.5rem;
   color: #1a63e4;
@@ -59,9 +79,13 @@ VanstoneONline is distributed under the terms of the GNU GPL
 
 .card--front,
 .card--back {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  -webkit-perspective: 800px;
+          perspective: 800px;
   border-radius: 1rem;
   padding: 1rem;
-  background-color: #fff;
+  background-color: white;
   position: relative;
   -webkit-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
@@ -77,11 +101,11 @@ VanstoneONline is distributed under the terms of the GNU GPL
 
 .card--back {
   position: absolute;
-  background-color: #927d7d;
-  left: 0;
+  background-color: rgba(85, 200, 200, 0.829);
+  left: .5  rem;
   top: 0;
   bottom: 0;
-  width: 90%;
+  width: 100%;
   z-index: -1;
   -webkit-transform: rotateY(-180deg);
           transform: rotateY(-180deg);

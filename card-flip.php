@@ -18,7 +18,7 @@ function wpse_load_plugin_css() {
     $plugin_url = plugin_dir_url( __FILE__ );
     wp_enqueue_style( 'card-flip', $plugin_url . 'css/card-flip.css' );
 }
-add_action( 'wp_enqueue_scripts', 'wpse_load_plugin_css' );
+add_action( 'wp_enqueue_scripts', 'wpse_load_plugin_css', 999 );
 
 //Function to call all the posts and turn it into a card flip. 
 
