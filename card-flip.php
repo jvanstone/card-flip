@@ -9,6 +9,7 @@
  */
 
 
+include('cf-admin.php');
 
 //Set thumbnail size
 add_image_size( 'gallery-index', 200, 200, array('center','center')); 
@@ -24,8 +25,6 @@ add_action( 'wp_enqueue_scripts', 'wpse_load_plugin_css', 999 );
 
 if( !function_exists('wpb_card_flip') ) {
 function wpb_card_flip() { 
-
-    ob_start();
     $true='true';
     $args = array(
         'posts_per_page'   => -1,
