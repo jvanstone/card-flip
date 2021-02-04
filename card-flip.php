@@ -9,8 +9,9 @@
  */
 
 //include('cf-admin.php');
+
 //Set thumbnail size
-add_image_size( 'gallery-index', 200, 200, array('center','center')); 
+add_image_size( 'card-flip-image', 200, 200, array('center','center')); 
 
 //Load Style Sheet for the Card Flip
 function wpse_load_plugin_css() {
@@ -21,8 +22,8 @@ add_action( 'wp_enqueue_scripts', 'wpse_load_plugin_css', 999 );
 
 //Function to call all the posts and turn it into a card flip. 
 
-if( !function_exists('wpb_card_flip') ) {
-function wpb_card_flip() { 
+if( !function_exists('vo_card_flip') ) {
+function vo_card_flip() { 
     $true='true';
     $args = array(
         'posts_per_page'   => -1,
@@ -34,27 +35,26 @@ function wpb_card_flip() {
     ob_start();
     ?>
     
-   <div id="gallery-index"> 
+   <div id="card-flip-gallery"> 
     <?php
     if ( $the_query->have_posts() ) : 
         while ( $the_query->have_posts() ) : $the_query->the_post(); 
         setup_postdata( $post );  ?>
-        <div class="gallery-item">
-        <?php the_content(); ?>
+        <div class="card-full">
             <article class="card">
             <div class="card--front">
                 <?php if ( has_post_thumbnail()) : ?>
                 <a href="<?php the_permalink(); ?>" alt="<?php the_title_attribute(); ?>">
-                <?php the_post_thumbnail('gallery-index',array('class' => 'card__img')); ?>
+                <?php the_post_thumbnail('card-flip-image',array('class' => 'card__img')); ?>
                 </a>
                 <?php endif; ?>
             </div>
             <div class="card--back">
                 <h2 class="card__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                <?php the_content(); ?>
+                
             </div>
             </article>
-        </div>
+        </div> <!--end Gallery Item -->
         <?php endwhile; 
        wp_reset_postdata(); ?>
         
@@ -62,12 +62,12 @@ function wpb_card_flip() {
         <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
     <?php endif;
     ?>
-    </div> <!-- End Gallery -->
+</div> <!-- End Gallery -->
     <?php 
 
     return ob_get_clean();
     } 
 // register shortcode
 }
-add_shortcode('card_flip', 'wpb_card_flip'); 
+add_shortcode('card-flip', 'vo_card_flip'); 
  ?>

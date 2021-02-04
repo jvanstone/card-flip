@@ -14,15 +14,26 @@ VanstoneOnline WordPress Theme © 2011-2019 TidyThemes
 VanstoneONline is distributed under the terms of the GNU GPL
 */
 
+*{
+  margin:0;
+  padding:0;
+  }
+  html,body{
+  height:100%;
+  width:100%;
+  }
+
 //Customizable Var for plugin
 $card--front-color: rgb(255, 255, 255); 
-$card--back-color: rgba(85, 200, 200); 
+$card--back-color: rgb(85, 200, 200); 
 
 $item-width: 200px;
 $border-round: 1rem;
 
 $h1-size: 1rem;
 $header-color:#0b072c;
+$font-color: #0b072c;
+$font-color2: #4c439b;
 
 
 /* set thumbnail in CSS */
@@ -31,25 +42,25 @@ $header-color:#0b072c;
 	height: auto;
 }
 
-div#gallery-index { 
+
+div#card-flip-gallery { 
   margin: 1em auto;
   
   width: 100%;
   height: auto;
-  box-sizing: border-box;
-
+  
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  background-color: $card--front-color;
 }
 
-.gallery-item {
+.card-full{
   box-sizing: inherit;
   margin: 10px;
   width: $item-width;
   height: auto;
+  flex-grow: 1;
 }
 
 .card {
@@ -83,9 +94,10 @@ div#gallery-index {
     padding: 1rem;
     background-color: $card--front-color;
     position: relative;
-    transition: all 1s ease-in-out;
+    transition: all .9s ease-in-out;
     transform-style: preserve-3d;
     box-shadow: 0 2rem 5rem -3.5rem rgba(0,0,0,0.15);
+  backface-visibility: hidden;
   }
   
   .card--front {
