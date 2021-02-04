@@ -8,9 +8,7 @@
  *
  */
 
-
-include('cf-admin.php');
-
+//include('cf-admin.php');
 //Set thumbnail size
 add_image_size( 'gallery-index', 200, 200, array('center','center')); 
 
