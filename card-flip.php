@@ -8,9 +8,7 @@
  *
  */
 
-//include('cf-admin.php');
-
-//Set thumbnail size
+//Set Card Flip Image Size
 add_image_size( 'card-flip-image', 200, 200, array('center','center')); 
 
 //Load Style Sheet for the Card Flip
@@ -25,6 +23,7 @@ add_action( 'wp_enqueue_scripts', 'wpse_load_plugin_css', 999 );
 if( !function_exists('vo_card_flip') ) {
 function vo_card_flip() { 
     $true='true';
+    //get all posts
     $args = array(
         'posts_per_page'   => -1,
         'orderby'          => 'date',
@@ -42,17 +41,16 @@ function vo_card_flip() {
         setup_postdata( $post );  ?>
         <div class="card-full">
             <article class="card">
-            <div class="card--front">
-                <?php if ( has_post_thumbnail()) : ?>
-                <a href="<?php the_permalink(); ?>" alt="<?php the_title_attribute(); ?>">
-                <?php the_post_thumbnail('card-flip-image',array('class' => 'card__img')); ?>
-                </a>
-                <?php endif; ?>
-            </div>
-            <div class="card--back">
-                <h2 class="card__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                
-            </div>
+                <div class="card--front">
+                    <?php if ( has_post_thumbnail()) : ?>
+                    <a href="<?php the_permalink(); ?>" alt="<?php the_title_attribute(); ?>">
+                    <?php the_post_thumbnail('card-flip-image',array('class' => 'card__img')); ?>
+                    </a>
+                    <?php endif; ?>
+                </div>
+                <div class="card--back">
+                    <h2 class="card__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>   
+                </div>
             </article>
         </div> <!--end Gallery Item -->
         <?php endwhile; 
@@ -60,9 +58,8 @@ function vo_card_flip() {
         
     <?php else : ?>
         <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-    <?php endif;
-    ?>
-</div> <!-- End Gallery -->
+    <?php endif; ?>
+   </div> <!-- End Gallery -->
     <?php 
 
     return ob_get_clean();

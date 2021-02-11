@@ -8,20 +8,11 @@ Version: 2021.1
 License: GNU General Public License
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: one-column, two-columns, custom-menu, featured-images, microformats, sticky-post, threaded-comments, translation-ready
-Text Domain: blankslate
+Text Domain: card-flip
 
 VanstoneOnline WordPress Theme © 2011-2019 TidyThemes
 VanstoneONline is distributed under the terms of the GNU GPL
 */
-
-*{
-  margin:0;
-  padding:0;
-  }
-  html,body{
-  height:100%;
-  width:100%;
-  }
 
 //Customizable Var for plugin
 $card--front-color: rgb(255, 255, 255); 
@@ -48,7 +39,7 @@ div#card-flip-gallery {
   
   width: 100%;
   height: auto;
-  
+  box-sizing: border-box;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -94,11 +85,12 @@ div#card-flip-gallery {
     padding: 1rem;
     background-color: $card--front-color;
     position: relative;
-    transition: all .9s ease-in-out;
+    transition: all .9s;
     transform-style: preserve-3d;
     box-shadow: 0 2rem 5rem -3.5rem rgba(0,0,0,0.15);
   backface-visibility: hidden;
   }
+  
   
   .card--front {
     z-index: 10;
@@ -119,6 +111,9 @@ div#card-flip-gallery {
     transform: rotateY(0deg);
     z-index: 10;
   }
+
+
+  
   
   .card:hover > .card--front {
     transform: rotateY(180deg);

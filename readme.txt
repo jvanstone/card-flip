@@ -31,7 +31,7 @@ Activate the plugin in your plug-in settings.
  
   Yes you can call the function on your template page. 
 
-  `<?php wpb_card_flip() ?>`
+  `<?php vo_card_flip() ?>`
 
 
 == Screenshots ==
